@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -16,6 +17,7 @@ function App() {
       <header className="App-header">
         
         <p>I'm a React person</p>
+        <Counter></Counter>
         <ul>
           {
             studentNames.map(student=><li>{student}</li>)
@@ -49,6 +51,16 @@ function Product(props){
       <h3>{name}</h3>
       <h5>{price}</h5>
       <button style={{backgroundColor:'green', color:'white', borderRadius:'5px'}}>Buy now</button>
+    </div>
+  )
+}
+
+//counter
+function Counter(){
+  const [count, setCount] = useState(10);
+  return (
+    <div>
+      <h1>Count:{count}</h1>
     </div>
   )
 }
