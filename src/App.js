@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -18,6 +18,7 @@ function App() {
 
         <p>I'm a React person</p>
         <Counter></Counter>
+        <Users></Users>
         <ul>
           {
             studentNames.map(student => <li>{student}</li>)
@@ -54,11 +55,11 @@ function Product(props) {
     </div>
   )
 }
-const buttonStyle = { 
-  backgroundColor: 'green', 
-  color: 'white', 
+const buttonStyle = {
+  backgroundColor: 'green',
+  color: 'white',
   borderRadius: '5px',
-  margin: '5px' 
+  margin: '5px'
 }
 //counter
 function Counter() {
@@ -70,6 +71,26 @@ function Counter() {
       <h1>Count:{count}</h1>
       <button style={buttonStyle} onClick={handleDecrease}>Decrease</button>
       <button style={buttonStyle} onClick={handleIncrease}>Increase</button>
+    </div>
+  )
+}
+
+//Using Api
+function Users() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(data => setUsers(data))
+  }, [])
+
+  return (
+    <div>
+      <h3>Dynamic Users:{users.length}</h3>
+      {
+        users.map(user =><li>{user.name}</li>)
+      }
     </div>
   )
 }
