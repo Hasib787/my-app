@@ -22,7 +22,7 @@ function App() {
           }
         </ul>
         {
-        products.map(pd=><Product item={pd}></Product>)
+        products.map(pd=><Product product={pd}></Product>)
         }
         <Person name="Hasib" job="Toto Company manager"></Person>
         <Person name="Md. Masud Rana" job="Software Engineer"></Person>
@@ -40,13 +40,15 @@ function Product(props){
     height:'300px',
     width:'300px',
     float:'left',
-    margin:'10px'
+    margin:'10px',
   }
+  const {name, price} = props.product;
+
   return (
     <div style={productStyle}>
-      <h3>{props.item.name}</h3>
-      <h5>{props.item.name}</h5>
-      <button>Buy now</button>
+      <h3>{name}</h3>
+      <h5>{price}</h5>
+      <button style={{backgroundColor:'green', color:'white', borderRadius:'5px'}}>Buy now</button>
     </div>
   )
 }
