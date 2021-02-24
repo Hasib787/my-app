@@ -2,19 +2,28 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const studentNames=['Hridoy', 'Riad', 'Rishad', 'Rakib', 'Hasib','Zara'];
   const products=[
     {name:'Photoshop', price:'$99.99'},
     {name:'Illustrator', price:'$60.99'},
-    {name:'PDF Reader', price:'$6.70'}
+    {name:'PDF Reader', price:'$6.70'},
+    {name:'Windows Pro', price:'$199.99'}
   ]
+
+
   return (
     <div className="App">
       <header className="App-header">
         
         <p>I'm a React person</p>
-        <Product product={products[0]}></Product>
-        <Product product={products[1]}></Product>
-        <Product product={products[2]}></Product>
+        <ul>
+          {
+            studentNames.map(student=><li>{student}</li>)
+          }
+        </ul>
+        {
+        products.map(pd=><Product item={pd}></Product>)
+        }
         <Person name="Hasib" job="Toto Company manager"></Person>
         <Person name="Md. Masud Rana" job="Software Engineer"></Person>
       </header>
@@ -35,8 +44,8 @@ function Product(props){
   }
   return (
     <div style={productStyle}>
-      <h3>{props.product.name}</h3>
-      <h5>{props.product.price}</h5>
+      <h3>{props.item.name}</h3>
+      <h5>{props.item.name}</h5>
       <button>Buy now</button>
     </div>
   )
