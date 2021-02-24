@@ -50,35 +50,42 @@ function Product(props) {
     <div style={productStyle}>
       <h3>{name}</h3>
       <h5>{price}</h5>
-      <button style={{ backgroundColor: 'green', color: 'white', borderRadius: '5px' }}>Buy now</button>
+      <button style={buttonStyle}>Buy now</button>
+    </div>
+  )
+}
+const buttonStyle = { 
+  backgroundColor: 'green', 
+  color: 'white', 
+  borderRadius: '5px',
+  margin: '5px' 
+}
+//counter
+function Counter() {
+  const [count, setCount] = useState(0);
+  const handleIncrease = () => setCount(count + 1);
+  const handleDecrease = () => setCount(count - 1);
+  return (
+    <div>
+      <h1>Count:{count}</h1>
+      <button style={buttonStyle} onClick={handleDecrease}>Decrease</button>
+      <button style={buttonStyle} onClick={handleIncrease}>Increase</button>
     </div>
   )
 }
 
-//counter
-function Counter() {
-  const [count, setCount] = useState(0);
-  const handleIncrease = () =>setCount(count + 1);
+function Person(props) {
+  const personStyle = {
+    border: '2px solid yellow',
+    margin: '.8em',
+    width: '600px'
+  }
   return (
-    <div>
-      <h1>Count:{count}</h1>
-      <button onClick={handleIncrease}>Increase</button>
+    <div style={personStyle}>
+      <h1>Name: {props.name} </h1>
+      <h3>Profession: {props.job} </h3>
     </div>
   )
-  }
+}
 
-  function Person(props) {
-    const personStyle = {
-      border: '2px solid yellow',
-      margin: '.8em',
-      width: '600px'
-    }
-    return (
-      <div style={personStyle}>
-        <h1>Name: {props.name} </h1>
-        <h3>Profession: {props.job} </h3>
-      </div>
-    )
-  }
-
-  export default App;
+export default App;
